@@ -33,7 +33,7 @@ function! tig_explorer#open_project_root_dir() abort
     echoerr 'tig-explorer.vim: ' . v:exception
     return
   endtry
-  :call tig_explorer#open(root_dir)
+  :call tig_explorer#open(short_path)
 endfunction
 
 function! tig_explorer#grep(str) abort
