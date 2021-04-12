@@ -293,13 +293,13 @@ endfunction
 
 function! s:project_root_dir() abort
   let current_file_dir = expand('%:p:h')
-  let git_dir = findfile('.git', expand('%:p:h') . ';')
+  let git_dir = findfile('.git', current_file_dir . ';')
   if git_dir ==# ''
-    let git_dir = finddir('.git', expand('%:p:h') . ';')
+    let git_dir = finddir('.git', current_file_dir . ';')
   endif
 
   if git_dir ==# ''
-    throw 'Not a git repository: ' . expand('%:p:h')
+    throw 'Not a git repository: ' . current_file_dir
   endif
 
   let root_dir = fnamemodify(git_dir, ':h')
