@@ -17,12 +17,12 @@ set cpoptions&vim
 " Public
 
 function! tig_explorer#open(str) abort
-  :call s:exec_tig_command(s:strip_commit(a:str))
+  call s:exec_tig_command(s:strip_commit(a:str))
 endfunction
 
 function! tig_explorer#open_current_file() abort
   let current_path = expand('%:p')
-  :call tig_explorer#open(current_path)
+  call tig_explorer#open(current_path)
 endfunction
 
 function! tig_explorer#open_project_root_dir() abort
@@ -33,7 +33,7 @@ function! tig_explorer#open_project_root_dir() abort
     echoerr 'tig-explorer.vim: ' . v:exception
     return
   endtry
-  :call tig_explorer#open(short_path)
+  call tig_explorer#open(short_path)
 endfunction
 
 function! tig_explorer#grep(str) abort
@@ -63,12 +63,12 @@ function! tig_explorer#grep(str) abort
     let word = escaped_word
   endif
 
-  :call s:exec_tig_command('grep ' . word)
+  call s:exec_tig_command('grep ' . word)
 endfunction
 
 function! tig_explorer#grep_resume() abort
   let keyword = get(g:, 'tig_explorer_last_grep_keyword', '')
-  :call tig_explorer#grep(keyword)
+  call tig_explorer#grep(keyword)
 endfunction
 
 function! tig_explorer#blame() abort
